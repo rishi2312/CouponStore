@@ -55,3 +55,9 @@ export const deleteAll = (req, res) => {                                        
     .catch(err => res.json({ error: err.toString() }))
   // res.json({ msg: 'deleted' })?
 }
+
+export const getAllAvailable = (req, res) => {
+  Coupons.find({ isAvailable: true })
+    .then(data => res.json(data))
+    .catch(err => res.json({ msg: err }))
+}

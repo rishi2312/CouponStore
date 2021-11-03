@@ -6,6 +6,7 @@ import {
   delOne,
   claimed,
   deleteAll,
+  getAllAvailable,
 } from "../controller/couponsController.js";
 const couponRoutes = express.Router();
 
@@ -15,5 +16,5 @@ couponRoutes.get("/get/:couponId", getById);                    // To fetch the 
 couponRoutes.delete("/remove/:couponId", delOne);               // To delete a specific document by ID
 couponRoutes.patch("/claim/:couponId", claimed);                // To Update a specific document by ID
 couponRoutes.delete("/deleteall", deleteAll);                   // To drop entire collections.. FOR TESTING ONLY
-
+couponRoutes.get('/getall', getAllAvailable)                    // To fetch all doceuments having isAvailable as true
 export default couponRoutes;
