@@ -1,47 +1,38 @@
-import cron from "node-cron";
-import Coupons from "./models/Coupons.js";
-import mongoose from 'mongoose'
-import couponRoutes from "./routes/couponRoutes.js";
-import updateExpired from "./scheduler/expiredUpdateScheduler.js";
-// cron.schedule("*/10 * * * * * *", () => checkForExpired());
+import express from 'express'
+import multer from 'multer'
+import path from 'path'
+import cors from 'cors'
 
-const _updateExpired = () => {
-    let count = 0
-    const coupons = Coupons.find({ isAvailable: true })
-        .then(data => {
-            let curr_date = new Date()
-            data.forEach(d => {
-                if (d.dateExpiry <= curr_date) {
-
-                    const newObj = Object.assign(d, { ...d, isAvailable: false, dateUpdated: new Date() })
-                    Coupons.updateOne({ _id: newObj._id }, newObj).then(count++).catch(err => console.log(err))
-                }
-            })
-            console.log(`records updated => ${count}`)
-        })
-        .catch(e => console.log(e))
-
-}
-
-const countDates = () => {
-    let count = 0;
-    let curr_date = new Date()
-    Coupons.find({ isAvailable: true })
-        .then(data => {
-            data.forEach(d => {
-                if (d.dateExpiry <= curr_date)
-                    count++;
-            })
-            console.log(`records updated : ${count}`);
-        })
-        .catch(err => console.log(err))
-}
-
-mongoose.connect("mongodb+srv://new_user:qwertyuiop@cluster0.lkcul.mongodb.net/MyDatabase?retryWrites=true&w=majority&ssl=true",
-    { useNewUrlParser: true }, () => {
-        console.log('db connected')
+const imageStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './images')
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '_' + file.originalname)
     }
-)
+})
 
-console.log('first')
-cron.schedule('*/5 * * * * *', () => updateExpired())
+const imageUpload = multer({
+    storage: imageStorage
+})
+
+
+const app = express()
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(cors())
+
+
+app.get('/', (req, res) => {
+    res.json({ msg: path.resolve() })
+})
+
+app.post('/upload', imageUpload.single('image'), (req, res) => { //imageUpload.single("image"),
+    // console.log(req.file)
+    console.log(req.file.filename)
+    res.json(req.body)
+})
+
+app.listen(8021, () => {
+    console.log('listening port 8021');
+})

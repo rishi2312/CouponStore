@@ -1,0 +1,31 @@
+
+uploading image from react ------
+
+const App = () => {
+
+    const [selectedFile, setSelectedFile] = useState(null)
+
+    const clickHandler = (e) => {
+        const formData = new FormData()
+        formData.append(
+            'image',
+            selectedFile,
+            selectedFile.name
+        )
+        axios.post('http://localhost:8021/upload', formData)
+            .then(res => console.log(res))
+            .catch(e => console.log(e))
+    }
+    const onFileChange = (e) => {
+        setSelectedFile(e.target.files[0])
+    }
+
+
+    return (
+        <div>
+            <input type="file" name="image" onChange={onFileChange} />
+            <button onClick={clickHandler}>submit</button>
+            {console.log(selectedFile)}
+        </div>
+    )
+}

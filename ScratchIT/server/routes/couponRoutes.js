@@ -8,9 +8,10 @@ import {
   deleteAll,
   getAllAvailable,
 } from "../controller/couponsController.js";
+import { imageUpload } from "../controller/uploadController.js";
 const couponRoutes = express.Router();
 
-couponRoutes.post("/add", addCoupon);                           // To add a new document to the collection
+couponRoutes.post("/add", imageUpload.single('image'), addCoupon);                           // To add a new document to the collection 
 couponRoutes.get("/get", getAll);                               // To fetch all the documents in the collection
 couponRoutes.get("/get/:couponId", getById);                    // To fetch the specific document by ID in the collection
 couponRoutes.delete("/remove/:couponId", delOne);               // To delete a specific document by ID
@@ -18,3 +19,7 @@ couponRoutes.patch("/claim/:couponId", claimed);                // To Update a s
 couponRoutes.delete("/deleteall", deleteAll);                   // To drop entire collections.. FOR TESTING ONLY
 couponRoutes.get('/getall', getAllAvailable)                    // To fetch all doceuments having isAvailable as true
 export default couponRoutes;
+
+
+
+// ** NOTE - requesting /add endpont must contains the formData with key as 'image' and value as the file.**
