@@ -9,10 +9,9 @@ export const getAll = (req, res) => {
 export const addCoupon = (req, res) => {                                        // Adding a new coupon with provided details such as expiry date, date issued, coupon type, coupon code and the description 
   const coupon = new Coupons({
     dateExpiry: new Date(req.body.dateExpiry),
-    dateIssued: new Date(req.body.dateIssued),
     couponType: req.body.couponType,
     couponCode: req.body.couponCode,
-    couponDescription: req.body.couponDescription,
+    fileName: req.file.filename,
   });
 
   coupon

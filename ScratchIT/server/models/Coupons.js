@@ -15,10 +15,6 @@ const CouponsSchema = mongoose.Schema({
         type: Date,
         required: true,
     },
-    dateIssued: {
-        type: Date,
-        required: true,
-    },
     couponType: {
         type: String,
         default: "others",
@@ -39,9 +35,10 @@ const CouponsSchema = mongoose.Schema({
         type: Date,
         default: null,
     },
-    couponDescription: {
+    fileName: {
         type: String,
-        required: true
+        required: true,
+        default: null
     }
 })
 
