@@ -1,20 +1,34 @@
 import express from 'express'
-import multer from 'multer'
 import path from 'path'
 import cors from 'cors'
+import mongoose from 'mongoose'
+import Category from './models/Catergory.js'
+import e from 'express'
+const DB_CONNECT_STRING = // mongo db connection url
+    "mongodb+srv://new_user:qwertyuiop@cluster0.lkcul.mongodb.net/MyDatabase?retryWrites=true&w=majority&ssl=true";
 
-const imageStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './images')
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + '_' + file.originalname)
-    }
-})
 
-const imageUpload = multer({
-    storage: imageStorage
-})
+const dummy_data =
+    ['Food & Dining',
+        'Fashion',
+        'Beauty & Health',
+        'Travel',
+        'Mobile & Tablets',
+        'Electronic & Appliances',
+        'Movies',
+        'Computer, Laptop',
+        'Home Furnishing',
+        'Flower & Gifts',
+        'Jewellery',
+        'Sports & Fitness',
+        'Camera & Accesories',
+        'Kids & Toys',
+        'Recharge',
+        'Books & Stationary',
+        'Web Hosting & Domain',
+        'Online Classes/Course',
+        'Automotive'
+    ]
 
 
 const app = express()
@@ -23,15 +37,70 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 
-app.get('/', (req, res) => {
-    res.json({ msg: path.resolve() })
+app.post('/addAll', (req, res) => {
+    var count = 0
+    dummy_data.forEach(data => {
+        const category = new Category({
+            category: data,
+            subcat: []
+        })
+        category.save().then(count++).catch(e => console.log(e.toString))
+    })
+    res.send(`${count} records added`)
 })
 
-app.post('/upload', imageUpload.single('image'), (req, res) => { //imageUpload.single("image"),
-    // console.log(req.file)
-    console.log(req.file.filename)
-    res.json(req.body)
+app.get('/', (req, res) => {
+    const category = Category.find()
+        .then(data => res.json(data))
+        .catch(e => res.json({ msg: e.toString() }))
 })
+
+
+app.post('/add', (req, res) => {
+    const category = new Category({
+        category: req.body.category,
+        // subcat: [{
+        //     _id: mongoose.Types.ObjectId(),
+        //     brandName: req.body.brandName
+        // }]
+        subcat: []
+    })
+    // res.send(category)
+    category.save().then(data => res.json(data)).catch(e => res.json({ msg: e.toString() }))
+})
+
+app.post('/add/:category', async (req, res) => {
+    let category = await Category.findOne({ category: req.params.category })
+    if (category) {
+        var exist = false;
+        for (var i = 0; i < category.subcat.length; i++)
+            if (category.subcat[i].brandName === req.body.brandName) {
+                exist = true;
+                break;
+            }
+        if (!exist) {
+            category.subcat.push(({
+                _id: mongoose.Types.ObjectId(),
+                brandName: req.body.brandName
+            }))
+            Category.updateOne({ _id: category._id }, {
+                $set: {
+                    subcat: category.subcat
+                }
+            }).then(data => res.json(data)).catch(e => res.json({ msg: e.toString() }))
+        } else res.json({ msg: 'sub category exist' })
+
+    }
+})
+
+
+app.delete('/deleteall', (req, res) => {
+    Category.deleteMany({}).then(res.json({ msg: 'deleted' })).catch({ msg: e.toString() })
+})
+
+mongoose.connect(DB_CONNECT_STRING, { useNewUrlParser: true }, () => {
+    console.log("Connected to database");
+});
 
 app.listen(8021, () => {
     console.log('listening port 8021');

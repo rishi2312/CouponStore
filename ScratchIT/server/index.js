@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import couponRoutes from "./routes/couponRoutes.js";
 import updateExpired from "./scheduler/expiredUpdateScheduler.js";
+import subCategoryRoutes from './routes/subCategoryRoutes.js'
 import cron from 'node-cron'
 import cors from 'cors'
 
@@ -25,7 +26,7 @@ mongoose.connect(DB_CONNECT_STRING, { useNewUrlParser: true }, () => {
 });
 
 app.use("/coupons", couponRoutes);                                                    // Using couponRoutes to route the end points like "http://localhost:8091/coupons"
-
+app.use("/category", subCategoryRoutes)
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

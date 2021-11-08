@@ -17,7 +17,7 @@ const CouponsSchema = mongoose.Schema({
     },
     couponType: {
         type: String,
-        default: "others",
+        required: true
     },
     couponCode: {
         type: String,
