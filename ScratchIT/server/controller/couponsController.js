@@ -1,15 +1,17 @@
 import Coupons from "../models/Coupons.js";
-
+import { getCouponType } from './subCategoryController.js'
 export const getAll = (req, res) => {
   const coupons = Coupons.find()
     .then((data) => res.json(data))
     .catch((e) => res.json({ error: e.toString() }));
 };
 
-export const addCoupon = (req, res) => {                                        // Adding a new coupon with provided details such as expiry date, date issued, coupon type, coupon code and the description 
+export const addCoupon = async (req, res) => {                                        // Adding a new coupon with provided details such as expiry date, date issued, coupon type, coupon code and the description 
+
+  let couponType = await getCouponType(req.body.category, req.body.brandName)
   const coupon = new Coupons({
     dateExpiry: new Date(req.body.dateExpiry),
-    couponType: req.body.couponType,
+    couponType: couponType,
     couponCode: req.body.couponCode,
     fileName: req.file.filename,
   });
@@ -23,7 +25,7 @@ export const addCoupon = (req, res) => {                                        
 export const getById = (req, res) => {
   Coupons.findById(req.params.couponId)
     .then((data) => res.json(data))
-    .catch((e) => res.json({ msg: e.toString() }));
+    .catch((e) => res.json({ error: e.toString() }));
 };
 
 export const delOne = (req, res) => {
@@ -58,5 +60,5 @@ export const deleteAll = (req, res) => {                                        
 export const getAllAvailable = (req, res) => {
   Coupons.find({ isAvailable: true })
     .then(data => res.json(data))
-    .catch(err => res.json({ msg: err }))
+    .catch(err => res.json({ error: err }))
 }

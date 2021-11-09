@@ -71,3 +71,29 @@ export const getByCategory = (req, res) => {
             else res.json({ msg: 'undefined category' })
         }).catch(e => res.json({ msg: e.toString() }))
 }
+
+export const getCouponType = async (category, brandName) => {
+    const categoryData = await Catergory.findOne({ category: category })
+    let couponType = categoryData._id + '_'
+    let existBrandName = false, i = 0
+    for (i = 0; i < categoryData.subcat.length; i++) {
+        if (categoryData.subcat[i].brandName === brandName) {
+            existBrandName = true
+            break
+        }
+    }
+    if (!existBrandName) {
+        const new_id = mongoose.Types.ObjectId()
+        categoryData.subcat.push({
+            _id: new_id,
+            brandName: brandName
+        })
+        await Catergory.updateOne({ _id: categoryData._id }, {
+            $set: {
+                subcat: categoryData.subcat
+            }
+        })
+        couponType += new_id
+    } else couponType += categoryData.subcat[i]._id
+    return couponType
+}

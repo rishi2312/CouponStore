@@ -1,9 +1,10 @@
 import express from 'express'
-import path from 'path'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import Category from './models/Catergory.js'
+import Coupons from './models/Coupons.js'
 import e from 'express'
+import { imageUpload } from './controller/uploadController.js'
 const DB_CONNECT_STRING = // mongo db connection url
     "mongodb+srv://new_user:qwertyuiop@cluster0.lkcul.mongodb.net/MyDatabase?retryWrites=true&w=majority&ssl=true";
 
@@ -49,6 +50,47 @@ app.post('/addAll', (req, res) => {
     res.send(`${count} records added`)
 })
 
+const getCouponType = async (category, brandName) => {
+    const categoryData = await Category.findOne({ category: category })
+    let couponType = categoryData._id + '_'
+    let existBrandName = false, i = 0
+    for (i = 0; i < categoryData.subcat.length; i++) {
+        if (categoryData.subcat[i].brandName === brandName) {
+            existBrandName = true
+            break
+        }
+    }
+    if (!existBrandName) {
+        const new_id = mongoose.Types.ObjectId()
+        categoryData.subcat.push({
+            _id: new_id,
+            brandName: brandName
+        })
+        await Category.updateOne({ _id: categoryData._id }, {
+            $set: {
+                subcat: categoryData.subcat
+            }
+        })
+        couponType += new_id
+    } else couponType += categoryData.subcat[i]._id
+    return couponType
+}
+
+app.post('/coupons/add', imageUpload.single('image'), async (req, res) => {
+    let couponType = await getCouponType(req.body.category, req.body.brandName)
+    const coupon = new Coupons({
+        dateExpiry: new Date(req.body.dateExpiry),
+        couponType: couponType,
+        couponCode: req.body.couponCode,
+        fileName: req.file.filename,
+    })
+    coupon
+        .save()
+        .then(data => res.json(data))
+        .catch(e => res.json({ msg: e.toString() }))
+})
+
+
 app.get('/', (req, res) => {
     const category = Category.find()
         .then(data => res.json(data))
@@ -56,18 +98,7 @@ app.get('/', (req, res) => {
 })
 
 
-app.post('/add', (req, res) => {
-    const category = new Category({
-        category: req.body.category,
-        // subcat: [{
-        //     _id: mongoose.Types.ObjectId(),
-        //     brandName: req.body.brandName
-        // }]
-        subcat: []
-    })
-    // res.send(category)
-    category.save().then(data => res.json(data)).catch(e => res.json({ msg: e.toString() }))
-})
+
 
 app.post('/add/:category', async (req, res) => {
     let category = await Category.findOne({ category: req.params.category })
