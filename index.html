@@ -1,0 +1,481 @@
+<html>
+    <head>
+        <title>ScratchIT Homepage</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            .no-padding{padding:0px;}
+            .no-padding-left{padding:0px;}
+            .no-padding-right{padding:0px;}
+            .form-check{margin-left: 10px;}
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid" style="max-width: 1200px;margin: 0 auto;">
+            <header class="row header">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 100%;margin-bottom: 25px; height:80px;">
+                    <!-- Image and text -->
+                    <a class="navbar-brand" href="#">
+                    <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                    ScratchIT
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                  
+                    <div class="collapse float-right navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                          </div>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                      </ul>
+                      <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                      </form>
+                    </div>
+                </nav>
+            </header>
+            <div class="row" style="margin-bottom:25px">
+                <p style="width:100%"><button class="btn btn-primary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  Submit New Coupon
+                </button></p>
+              <div class="collapse" id="collapseExample" style="width:100%">
+                <div class="card card-body">
+                  
+                    <div class="form-row border-bottom" style="margin-bottom: 10px;">
+                        <div class="form-group col"><label for="inputState">Category</label>
+                            <select id="inputState" class="form-control">
+                              <option selected>Choose...</option>
+                              <option>...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col"><label for="inputState">Brand</label>
+                            <select id="inputState" class="form-control">
+                              <option selected>Choose...</option>
+                              <option>...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row border-bottom" style="margin-bottom: 10px;">
+                        <div class="form-group col"><label for="inputExpiry">Expiry Date</label>
+                            <input type="date" class="form-control" id="expirydate">
+                        </div>
+                        <div class="form-group col"><label for="inputDescription">Description</label>
+                            <input type="text" class="form-control" id="description">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="inputCoupon">Coupon Code</label>
+                            <input type="text" class="form-control form-control-lg" id="expirydate" placeholder="ZOMATO50">
+                        </div>
+                        <div class="form-group col">
+                            <label for="inputFile">Screenshots</label>
+                            <input type="file" class="form-control" id="fileupload" style="border: none;">
+                        </div>
+                        <div class="form-group col">
+                            <label for="inputCoupon"><small class="text-muted">By submitting this form you agree to our privacy policy.</small></label>
+                            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#responseModalCenter">Submit Coupon</button>
+                        </div>
+                    </div>
+                
+                </div>
+              </div>
+            </div>
+            <div class="row content">
+                <div class="col-2">
+                    <p class="h5 border-bottom">Filter</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Default checkbox
+                        </label>
+                    </div>
+                    <p class="h5 border-bottom" style="margin-top: 25px;">Type</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                          Default radio
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Second radio
+                        </label>
+                      </div>
+                </div>
+                <div class="col-10">
+                    <div class="row">
+                        <div class="col-sm-4" style="margin-bottom: 24px;">
+                            <div class="card">
+                                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17d235ea8a2%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17d235ea8a2%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.5078125%22%20y%3D%2296.4546875%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">Coupon Title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Coupon Details</a>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="col-6 no-padding-left">
+                                    <small class="text-muted" style="line-height: 23px;">Added 3 mins ago</small>
+                                    </span>
+                                    <span class="col-6 no-padding-right text-right float-right">
+                                        <small class="text-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 12</small> 
+                                        <small class="text-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 24</small>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-bottom: 24px;">
+                            <div class="card">
+                                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17d235ea8a2%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17d235ea8a2%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.5078125%22%20y%3D%2296.4546875%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">Coupon Title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Coupon Details</a>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="col-6 no-padding-left">
+                                    <small class="text-muted" style="line-height: 23px;">Added 3 mins ago</small>
+                                    </span>
+                                    <span class="col-6 no-padding-right text-right float-right">
+                                        <small class="text-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 12</small> 
+                                        <small class="text-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 24</small>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-bottom: 24px;">
+                            <div class="card">
+                                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17d235ea8a2%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17d235ea8a2%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.5078125%22%20y%3D%2296.4546875%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">Coupon Title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Coupon Details</a>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="col-6 no-padding-left">
+                                    <small class="text-muted" style="line-height: 23px;">Added 3 mins ago</small>
+                                    </span>
+                                    <span class="col-6 no-padding-right text-right float-right">
+                                        <small class="text-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 12</small> 
+                                        <small class="text-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 24</small>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-bottom: 24px;">
+                            <div class="card">
+                                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17d235ea8a2%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17d235ea8a2%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.5078125%22%20y%3D%2296.4546875%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">Coupon Title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Coupon Details</a>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="col-6 no-padding-left">
+                                    <small class="text-muted" style="line-height: 23px;">Added 3 mins ago</small>
+                                    </span>
+                                    <span class="col-6 no-padding-right text-right float-right">
+                                        <small class="text-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 12</small> 
+                                        <small class="text-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 24</small>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-bottom: 24px;">
+                            <div class="card">
+                                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17d235ea8a2%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17d235ea8a2%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.5078125%22%20y%3D%2296.4546875%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">Coupon Title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Coupon Details</a>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="col-6 no-padding-left">
+                                    <small class="text-muted" style="line-height: 23px;">Added 3 mins ago</small>
+                                    </span>
+                                    <span class="col-6 no-padding-right text-right float-right">
+                                        <small class="text-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 12</small> 
+                                        <small class="text-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 24</small>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-bottom: 24px;">
+                            <div class="card">
+                                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17d235ea8a2%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17d235ea8a2%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.5078125%22%20y%3D%2296.4546875%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">Coupon Title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Coupon Details</a>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="col-6 no-padding-left">
+                                    <small class="text-muted" style="line-height: 23px;">Added 3 mins ago</small>
+                                    </span>
+                                    <span class="col-6 no-padding-right text-right float-right">
+                                        <small class="text-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 12</small> 
+                                        <small class="text-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 24</small>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-bottom: 24px;">
+                            <div class="card">
+                                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17d235ea8a2%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17d235ea8a2%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.5078125%22%20y%3D%2296.4546875%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">Coupon Title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Coupon Details</a>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="col-6 no-padding-left">
+                                    <small class="text-muted" style="line-height: 23px;">Added 3 mins ago</small>
+                                    </span>
+                                    <span class="col-6 no-padding-right text-right float-right">
+                                        <small class="text-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 12</small> 
+                                        <small class="text-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 24</small>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-bottom: 24px;">
+                            <div class="card">
+                                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17d235ea8a2%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17d235ea8a2%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.5078125%22%20y%3D%2296.4546875%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">Coupon Title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Coupon Details</a>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="col-6 no-padding-left">
+                                    <small class="text-muted" style="line-height: 23px;">Added 3 mins ago</small>
+                                    </span>
+                                    <span class="col-6 no-padding-right text-right float-right">
+                                        <small class="text-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 12</small> 
+                                        <small class="text-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 24</small>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-bottom: 24px;">
+                            <div class="card">
+                                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17d235ea8a2%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17d235ea8a2%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.5078125%22%20y%3D%2296.4546875%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">Coupon Title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Coupon Details</a>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="col-6 no-padding-left">
+                                    <small class="text-muted" style="line-height: 23px;">Added 3 mins ago</small>
+                                    </span>
+                                    <span class="col-6 no-padding-right text-right float-right">
+                                        <small class="text-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 12</small> 
+                                        <small class="text-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 24</small>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-bottom: 24px;">
+                            <div class="card">
+                                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17d235ea8a2%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17d235ea8a2%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.5078125%22%20y%3D%2296.4546875%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">Coupon Title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Coupon Details</a>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="col-6 no-padding-left">
+                                    <small class="text-muted" style="line-height: 23px;">Added 3 mins ago</small>
+                                    </span>
+                                    <span class="col-6 no-padding-right text-right float-right">
+                                        <small class="text-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 12</small> 
+                                        <small class="text-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 24</small>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="margin-bottom: 24px;">
+                            <div class="card">
+                                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17d235ea8a2%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17d235ea8a2%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.5078125%22%20y%3D%2296.4546875%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">Coupon Title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Coupon Details</a>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="col-6 no-padding-left">
+                                    <small class="text-muted" style="line-height: 23px;">Added 3 mins ago</small>
+                                    </span>
+                                    <span class="col-6 no-padding-right text-right float-right">
+                                        <small class="text-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 12</small> 
+                                        <small class="text-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i> 24</small>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        
+        <!-- Coupon Detail Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Coupon Brand Name</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                ...
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i> Not Working</button>
+                <button type="button" class="btn btn-success"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i> Claimed Successfully</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Submit Response Modal -->
+        <div class="modal fade" id="responseModalCenter" tabindex="-1" role="dialog" aria-labelledby="responseModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Coupon Submitted Successfully</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                <label>You have submitted these details</label>
+                <ul>
+                    <li>Category: Food</li>
+                    <li>Sub Category: Zomato</li>
+                    <li>Expiry Date: 25 December 2021</li>
+                    <li>Description: This coupon will get you 50% discound</li>
+                    <li>Cupon Code: ZOMATO50</li>
+                    <li>Screenshots:</li>
+                </ul>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-trash fa-lg" aria-hidden="true"></i> Delete Coupon</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <footer class="row" style="width: 100%;background: #f8f9fa!important;">
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3" style="margin: 0 auto;">© 2021 Copyright:
+              <a href="#"> ScrapIT.com</a>. All Rights Reserved.
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    </body>
+</html>
